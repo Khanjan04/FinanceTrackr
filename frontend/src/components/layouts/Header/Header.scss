@@ -1,0 +1,148 @@
+$button-color: #5177ff;
+$border-color-pam: #d9d9d9;
+$header-message-font-color2: #e04958;
+$header-message-font-color1: #3d3d3d;
+$header-message-font-color3: #777876;
+$prof-email-font-color1: #4b475c;
+$prof-color: #000000;
+.avatar {
+  width: 17px;
+  height: 17px;
+  margin-top: -0.2rem;
+}
+.custom-dropdown .dropdown-menu{
+  margin-top: 30px;
+}
+.notification-heading{
+float: right;
+}
+.cursor_pointer_notification:hover{
+  cursor: pointer;
+}
+.react-tabs__tab--selected{
+  border-color: white !important;
+  color: blue !important;
+  background: none !important;
+}
+.notification-icon {
+  position: relative;
+  display: inline-block;
+}
+.sticky_heading{
+  top: 0px;
+  position: sticky !important;
+  z-index: 500;
+}
+.sticky_heading_bottom{
+  bottom: 0px;
+  position: sticky !important;
+  z-index: 500;
+}
+.notification-count {
+  position: absolute;
+  // top: -8px;
+  right: -8px;
+  background-color: #5177FF;
+  color: white;
+  font-size: 10px;
+  font-family: "Poppins" !important ;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  padding: 1px 4px;
+  border-radius: 50%;
+}
+.text-color-prof {
+  color: $prof-color;
+}
+
+.text-color-email {
+  color: $prof-email-font-color1;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+.search-input {
+  height: 2.4rem !important;
+}
+
+.bg-blueButton {
+  background-color: #2d3748 !important;
+  border-radius: 4px !important;
+}
+
+.navbar-font {
+  font-family: "Poppins" !important ;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+}
+.toastify-logo {
+  background-color: #2D3748 !important;
+  color: white !important;
+}
+
+.text-color-h1 {
+  color: $header-message-font-color1;
+}
+.text-color-h2 {
+  color: $header-message-font-color2;
+}
+.text-color-h3 {
+  color: $header-message-font-color3;
+}
+
+div[aria-labelledby="collasible-nav-dropdown"] {
+  box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.search-fieldAttrib {
+  border: 1px solid #edecec;
+  border-radius: 4px;
+  width: 14rem !important;
+  margin-top: 1px;
+margin-bottom: 1px;
+}
+
+.button-Attrib {
+  width: 14.2rem !important;
+  border-radius: 4px !important;
+  height: 2.1rem !important;
+}
+
+.button-margins{
+  margin-left: 19px !important;
+  margin-right: 14px !important;
+}
+
+input[id="nav-search"] {
+  font-family: "Poppins" !important;
+  font-size: 12px !important;
+}
+.sidebar-border-end {
+  border-right: 0.25px solid #edecec;
+}
+
+.h-navbar {
+  height: 5rem;
+}
+#collasible-nav-dropdown {
+  padding-top: 4px !important;
+}
+
+.drop_border {
+  border-bottom: 0.25px solid #d9d9d9 !important;
+}
+
+.ps-title {
+  padding-left: 3.5rem !important;
+}
+.shadow-bottom{
+  box-shadow:24px 3px 18px rgb(210, 208, 208); 
+}
+.logo-height{
+  height: 80px !important;
+}
+.initials-avatar{
+background-color:#5177FF !important;
+}

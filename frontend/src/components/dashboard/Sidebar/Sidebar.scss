@@ -1,0 +1,270 @@
+$card-text-color: #1c222c;
+$sidebar-text-color: #717171;
+$active-text-color: #ffffff;
+$active-accordion-text-color: #fafafa;
+$popover-h-color: #333333;
+$popover-input-color: #5f636d;
+
+.active-accordion img {
+  filter: invert(50%) sepia(57%) saturate(5668%) hue-rotate(215deg)
+    brightness(105%) contrast(103%);
+}
+
+.accordion {
+  --bs-accordion-btn-icon: url("./icons/arrow_icn.svg") !important;
+  --bs-accordion-btn-active-icon: url("./icons/active_arrow.svg") !important;
+  --bs-accordion-btn-icon-width: 0.8rem !important;
+}
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(90deg) !important;
+}
+.accordion-button::after {
+  background-size: 8px !important;
+  transition: var(--bs-accordion-btn-icon-transition);
+}
+
+.pop-form {
+  color: $popover-input-color;
+  font-size: 12px;
+}
+.bg-popover {
+  color: $popover-h-color;
+}
+
+.active-accordion {
+  color: $active-text-color !important;
+}
+
+.bg-darkGrey {
+  color: $card-text-color !important;
+}
+
+.accordion-button {
+  background-color: inherit !important;
+  border: none !important;
+  color: $sidebar-text-color !important;
+  font-family: "Poppins" !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 0.75rem 0 !important;
+  padding-right: 15px !important;
+  word-break: break-all !important;
+  padding-left: 1rem !important;
+}
+
+.sidebar-button-border {
+  border-left: 4px $active-text-color solid !important;
+  --bs-accordion-btn-icon: url("./icons/arrow_icn_activeLink.svg") !important;
+}
+
+.sidebar-button-border .accordion-button {
+  color: $active-text-color !important;
+}
+
+.active-linkElement {
+  color: $active-text-color !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(187, 189, 193, 0.25) !important;
+  // background-color: rgba(29, 78, 216, 1) !important;
+  // border-left: 6px $active-text-color solid !important;
+  border-radius: 0.5rem;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: $active-text-color !important;
+  box-shadow: none !important;
+}
+
+.sidebar-button-border {
+  .accordion-button {
+    background-color: rgba(81, 119, 255, 0.05) !important;
+  }
+}
+
+.accordion-flush .accordion-collapse {
+  padding-left: 1rem !important;
+}
+
+.accordion-item {
+  background-color: inherit !important;
+  border-bottom: none !important;
+}
+
+.sidebar-list {
+  .list-group-item {
+    border: none !important;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.inactive-text-color {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  background-color: inherit !important;
+}
+
+.accordion-button::after {
+  color: $sidebar-text-color !important;
+}
+
+.bg-card {
+  background: $card-text-color !important;
+  background-image: url("./icons/CardBackground.svg") !important;
+  background-size: cover;
+}
+
+.bg-button {
+  background-image: url("./icons/bg_button.svg") !important;
+  background-size: cover;
+}
+
+.card-border {
+  border-radius: 15px !important;
+}
+
+.button-border {
+  border-radius: 10px !important;
+}
+
+.sidebar-font {
+  font-style: normal !important;
+  // font-size: 16px !important;
+  color: #ffffff;
+}
+
+.tc-darkGrey {
+  color: $sidebar-text-color !important;
+}
+
+.text-button {
+  color: $card-text-color !important;
+  font-weight: 600 !important;
+  font-size: 10px !important;
+}
+
+.contact-button-fixed {
+  width: 90%;
+  left: 12px;
+  bottom: 12px;
+}
+.contact-button-responsive {
+  width: 15%;
+  left: 12px;
+  bottom: 80px;
+}
+
+.p-30 {
+  padding-bottom: 30%;
+}
+
+.contact-div:hover .cls2 {
+  display: none;
+}
+
+.cls1 {
+  display: none;
+}
+
+.contact-div:hover .cls1 {
+  display: block;
+}
+
+#side-pop input {
+  font-size: 10px;
+}
+
+#popover-basic {
+  box-shadow: 0px 5px 17px rgba(0, 0, 0, 0.15);
+  border: none;
+  width: 25em !important;
+  padding: 0.5em;
+}
+.popover {
+  --bs-popover-max-width: 25em !important;
+}
+
+.padding_sidebar {
+  padding: 0.75rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.active-linkElement .filter-active {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.accordion-button:not(.collapsed) .filter-active {
+  filter: brightness(0) saturate(100%) invert(37%) sepia(99%) saturate(1905%)
+    hue-rotate(215deg) brightness(103%) contrast(102%);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ababab;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box; // <== make the border work
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-button-border .filter-active {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+// contact us css
+.contactus-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+.contactus-label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #5f636d;
+}
+.contactus-input {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px !important;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: black;
+  border-radius: 0.25rem;
+  padding: 1em;
+}
+.contactus-query {
+  resize: none;
+}

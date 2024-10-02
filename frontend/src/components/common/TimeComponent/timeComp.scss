@@ -1,0 +1,73 @@
+$datePath: "./icons/calendar.svg";
+.datetime-component {
+  background: #f9f9f9;
+  border: 1px solid #cbcbcb;
+  border-radius: 6px;
+}
+.title-style {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #5f636d;
+}
+.input-style {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  background-color: #f9f9f9;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url(#{$datePath}) no-repeat;
+}
+.form-submit-btn {
+  background: #5177ff;
+  border-radius: 3px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  border: 1px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.datetime-component .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.assign_policy_container {
+  min-height: 200px;
+}
+.display_names_heading {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-size: 16px;
+  color: #5f636d;
+}
+
+.asset__menu {
+  z-index: 1000 !important;
+}
+
+.allocate_resource_name:hover {
+  word-wrap: break-word !important;
+  display: block;
+  white-space: normal;
+  overflow: visible;
+}
+.allocate_resource_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+}

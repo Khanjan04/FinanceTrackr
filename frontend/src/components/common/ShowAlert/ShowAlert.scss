@@ -1,0 +1,50 @@
+.submit_button {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    background: #5177ff;
+    border-radius: 3px !important;
+    padding: 10px 30px;
+  }
+  .cancel_button {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #263746;
+    background: #ffffff;
+    border-radius: 3px !important;
+    padding: 10px 30px;
+  }
+  .cursor_pointer {
+    cursor: pointer;
+  }
+  .display_names {
+    font-family: "Poppins" !important;
+    font-size: 14px !important;
+    line-height: 1.5em !important;
+    color: #5F636D !important;
+}
+.sub_heading {
+    font-family: "DM Sans" !important;
+    font-size: 20px !important;
+    line-height: 1.5em !important;
+    color: #5F636D !important;
+}
+
+.sub_heading_bold {
+  font-family: "DM Sans" !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    line-height: 1.5em !important;
+    color: #5F636D !important;
+}
+
+.alert_main_container {
+  max-height: 400px;
+  overflow: auto;
+}

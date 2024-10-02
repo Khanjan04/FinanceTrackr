@@ -1,0 +1,51 @@
+.rule_based_input_field {
+    font-family: 'DM Sans' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    padding-top: 3.5% !important;
+    padding-bottom: 3.5% !important;
+    border-radius: 4px !important;
+}
+
+.rule_based_input_field:focus {
+    background-color: #fff !important;
+    border-color: #ced4da !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.rule_based_input_field:valid,
+.rule_based_input_field:valid:focus {
+    border-color: #ced4da !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+.add_new_mapping {
+    font-family: 'DM Sans' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 21px !important;
+    color: #2874D8;
+}
+
+.mapping_heading_label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #50514F;
+}
+
+.mapping_paragraph_label {
+    font-family: 'DM Sans' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    color: #5F636D;
+}

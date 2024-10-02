@@ -1,0 +1,74 @@
+.search_field {
+    width: 28% !important;
+    background: #F9FAFF !important;
+    border: 1px solid #5177FF !important;
+    border-radius: 4px !important;
+    font-family: 'DM Sans' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    color: #535050 !important;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+}
+.search_field:hover {
+    background: #F9FAFF !important;
+}
+
+#select_filter_by:focus, #select_action:focus {
+    border-color: #ced4da !important;
+    box-shadow: none !important;
+    background-color: white;
+}
+#select_filter_by, #select_action {
+    padding-right: 35px !important;
+    padding-left: 15px !important;
+}
+
+.select_options_css{
+    padding-right: 3px !important;
+    color: #717171 !important;
+    .MuiSelect-select
+   {
+        padding-right: 34px !important;
+    }
+}
+
+#select_filter_by, #select_action, .select_options {
+    font-family: 'DM Sans' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    color: #717171 !important;
+}
+.css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon {
+    right: 9px !important;
+}
+
+.active_button_blue {
+    background: #5177FF !important;
+}
+
+.dactive_button_black {
+    background: #A9ABB2 !important;
+    color: white !important;
+}
+
+.rdt_subheader_menu {
+    padding-right: 2.5rem !important;
+    padding-left: 50px !important;
+    padding-bottom: 10px !important;  
+    border-bottom: solid #f1f0f0;
+}
+.cvQOBp{
+background-color : white !important;
+}
+.advance-svg{
+    height: 1.6rem;
+    width: 3.2rem;
+}
+.search_input .MuiInputBase-input:focus{
+    border: none !important;
+}

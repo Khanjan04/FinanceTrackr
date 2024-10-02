@@ -1,0 +1,297 @@
+$datePath: "../../../images/date.svg";
+.boxing {
+  margin-top: 2vh;
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+}
+.icon {
+  text-align: center;
+}
+.below-table {
+  border: 2px solid #f0f0f0;
+}
+.page-name {
+  float: left;
+  vertical-align: middle;
+  font-family: "Poppins" !important;
+  color: #50514f;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 39px;
+}
+.download-csv-btn {
+  border-radius: 4px;
+  border: none !important;
+  background: #5177ff;
+  vertical-align: middle;
+  padding: 5px 1vw;
+}
+.download-csv-text {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #ffffff;
+}
+.hr-line {
+  border: 1px solid #f0f0f0;
+}
+.search-box:hover {
+  background: #f9faff;
+  border: 1px solid #5177ff;
+  outline:1px solid #5177ff;
+  border-radius: 4px;
+  width: 50%;
+  .grayscale { filter: grayscale(0%); }
+
+}
+.search-box{
+  background:#f9faff ;
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 50%;
+  .grayscale { filter: grayscale(100%); }
+
+}
+#dropdown-actions{
+  display: inline-block;
+}
+.search-placeholder {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #535050;
+  background-color: inherit;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+input[type="text"] {
+  outline: none;
+}
+.search-placeholder::after {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #535050;
+  border: 0;
+  background-color: inherit;
+}
+
+// apply button styles
+.apply-div{
+  display: flex;
+flex-direction: row;
+align-items: center;
+padding: 10px;
+gap: 11px;
+border-radius: 0px 4px 4px 0px;
+margin-left: 10px;
+}
+.active_button_blue {
+  background: #5177FF !important;
+}
+
+.dactive_button_black {
+  background: #A9ABB2 !important;
+}
+.apply-btn{
+  font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 21px;
+color: #FFFFFF;
+border:0;
+background-color: inherit;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.filter-action-select{
+  font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 21px;
+text-align: right;
+color: #717171;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.apply-border{
+  border-radius: 5px;
+  border:0.3px solid #D9D9D9;
+      height: 35px !important;
+}
+.filter-options {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  color: #717171 !important;
+  border: 0;
+  background-color: white;
+}
+.filter-options:hover {
+  background-color: none !important;
+}
+.filter-options:focus {
+  outline: none;
+}
+.advance-search {
+  box-sizing: border-box;
+  background: #f9f9f9;
+  border: 1px solid #cbcbcb;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.advance-search-label {
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+display: flex;
+align-items: center;
+color: #000000;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url(#{$datePath}) no-repeat;
+}
+
+.advance_filter_button {
+  border: 0 !important;
+  border-color: inherit;
+  background-color: inherit;
+}
+.qr{
+  padding-bottom: 10px;
+}
+.icon-size{
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.icon-size_filter{
+  height: 1rem;
+  width: 1rem;
+}
+
+//customize column
+.cursor_pointer {
+  cursor: pointer;
+}
+.circle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.custom-pointer:hover{
+  cursor: pointer;
+}
+.checkbox_size{
+  height:14px;
+  width: 14px;
+}
+.customize-column-name {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 39px;
+  color: #50514f;
+}
+.check:checked {
+  height: 10px;
+  width: 10px;
+}
+.modal-content{
+  padding-top:1vw;
+  padding-left: 1.8vw;
+  padding-right: 1.8vw;
+}
+.non-check:checked {
+  height: 10px;
+  width: 10px;
+}
+.custom-modal-body {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  height: 90%;
+  border: 0 !important;
+  border-color: inherit;
+  background-color: inherit;
+  color: #5f636d;
+}
+.modal-check {
+  padding-right: 50px;
+}
+.modals-btn-close {
+  border: 0 !important;
+  border-color: inherit;
+  background-color: inherit;
+  font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 18px;
+text-align: center;
+color: #263746;
+}
+.modals-btn-save {
+  border: 0 !important;
+  border-color: inherit;
+  background-color: inherit;
+  background: #5177ff;
+  border-radius: 3px;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+color: #FFFFFF;
+}
+
+//react-data-table-component styles
+.rdt_TableCol {
+  color: #717171 !important;
+  background-color: inherit !important;
+  font-weight: 700;
+  font-size: larger;
+}
+.rdt_TableHead {
+  border: 1px solid #dee2e6;
+  border-left-color: white !important;
+  border-right-color: white !important;
+  border-top-color: white !important;
+}
+.rdtc-report{
+  min-height:  300px !important;
+}
+
+.custom-pointer:hover{
+  cursor: pointer;
+}
+
+.checkbox_size{
+  height: 14px;
+  width: 14px;
+}
