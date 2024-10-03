@@ -11,37 +11,41 @@ import { showError, showSuccess } from "../../../utils/showMessage";
 import { fadedelayTime } from "../../../utils/transitionEffectParams";
 import CrossButton from "../../common/ButtonSpinner/CrossButton";
 import GeneralButton from "../../common/SaveButton/GeneralButton";
-import { addExpense } from "../../../api/expense";
+import { addAccountTransaction, editAccountTransaction } from "../../../api/accountTransaction";
 
-const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseList }) => {
+const EditAccountTransactionInstance = ({
+  getAccountTransactionList,
+  setOpenEditAccountTransaction,
+  setAccountTransactionInstance,
+  accountTransactionInstance,
+}) => {
   const [date, setDate] = useState("");
-  const [type, setType] = useState("home");
-  const [amount, setAmount] = useState("");
-  const [description, setDescription] = useState("");
+  const [type, setType] = useState(accountTransactionInstance.type);
+  const [amount, setAmount] = useState(accountTransactionInstance.amount);
+  const [description, setDescription] = useState(accountTransactionInstance.description);
   const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [slideChecked, setSlideChecked] = useState(false);
 
   useEffect(() => {
     setSlideChecked(true);
-    const now = new Date();
+    const now = new Date(accountTransactionInstance.date * 1000);
     let date =
       now.getFullYear() +
       "-" +
       (now.getMonth() < 9 ? "0" + (now.getMonth() + 1) : now.getMonth() + 1) +
       "-" +
       (now.getDate() < 9 ? "0" + now.getDate() : now.getDate());
-    
-      setDate(date);
+
+    setDate(date);
   }, []);
-  
-  const expense_types = [
-    { value: "home", label: "Home" },
-    { value: "miscellaneous", label: "Miscellaneous" },
-    { value: "travelling", label: "Travelling" },
-    { value: "med_learning", label: "Medical/Learning" },
-    { value: "shop_party", label: "Shopping/Party" },
-    { value: "special", label: "Special" },
+
+  const accountTransaction_types = [
+    { value: "miniorange", label: "miniOrange" },
+    { value: "freelance", label: "Freelance" },
+    { value: "dad", label: "Dad" },
+    { value: "invts_sold", label: "Invts Sold" },
+    { value: "refund", label: "Refund" },
   ];
 
   const selectStyles = {
@@ -68,7 +72,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
     }),
   };
 
-  const addExpenseFormHandler = async (event) => {
+  const editAccountTransactionFormHandler = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
@@ -80,23 +84,26 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       finalDate = new Date(date);
       setDate(finalDate);
 
-      const { data, error } = await addExpense({
-        ...(date !== "" && { date: Date.parse(finalDate) / 1000 }),
-        ...(type !== "" && { type: type }),
-        ...(amount !== "" && { amount: amount }),
-        ...(description !== "" && { description: description }),
+      const { data, error } = await editAccountTransaction({
+        id: accountTransactionInstance.id,
+        updatedInstance : {
+          ...(date !== "" && { date: Date.parse(finalDate) / 1000 }),
+          ...(type !== "" && { type: type }),
+          ...(amount !== "" && { amount: amount }),
+          ...(description !== "" && { description: description }),
+        },
       });
       if (data !== null) {
         showSuccess(data);
         setLoading(false);
-        setOpenAddExpense((o) => !o);
-        setExpenseInstance(new Object());
+        setOpenEditAccountTransaction((o) => !o);
+        setAccountTransactionInstance(new Object());
       }
       if (error !== null) {
         showError(error);
         setLoading(false);
       }
-      getExpenseList();
+      getAccountTransactionList();
     }
   };
 
@@ -105,15 +112,15 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       <div>
         <Container fluid className="main_content_container mx-auto">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h3 className="main_content_heading">Add Expense</h3>
+            <h3 className="main_content_heading">Edit Account Transaction</h3>
             <CrossButton
-              onClick={() => setOpenAddExpense((o) => !o)}
+              onClick={() => setOpenEditAccountTransaction((o) => !o)}
             ></CrossButton>
           </div>
           <Form
             noValidate
             validated={validated}
-            onSubmit={addExpenseFormHandler}
+            onSubmit={editAccountTransactionFormHandler}
             className="add_asset_form"
           >
             <Stack gap={1}>
@@ -154,10 +161,10 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
                 </Form.Label>
                 <Col md={9}>
                   <Select
-                    defaultValue={expense_types[0]}
+                    defaultValue={accountTransaction_types[0]}
                     name="asset_type"
                     required={true}
-                    options={expense_types}
+                    options={accountTransaction_types}
                     onChange={(selectedOption) => setType(selectedOption.value)}
                     styles={selectStyles}
                   />
@@ -210,7 +217,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
               <Row className="pt-9 mb-1 justify-content-end">
                 <Col sm="auto">
                   <GeneralButton
-                    onClickEvent={() => setOpenAddExpense((o) => !o)}
+                    onClickEvent={() => setOpenEditAccountTransaction((o) => !o)}
                     className="me-1"
                     value="Cancel"
                     color="#505050"
@@ -232,7 +239,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
                   ) : (
                     <GeneralButton
                       className="me-1"
-                      value="Add"
+                      value="Update"
                       variant="contained"
                       size="large"
                     />
@@ -247,4 +254,4 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
   );
 };
 
-export default AddExpenseInstance;
+export default EditAccountTransactionInstance;

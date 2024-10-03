@@ -24,9 +24,13 @@ class BankAccountTransactionViewSet(
         serializer = BankAccountTransactionSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({
-            'message': "Success"
-        }, status=status.HTTP_201_CREATED)
+            return Response({
+                'message': "Success"
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
@@ -54,7 +58,11 @@ class BankAccountTransactionViewSet(
         serializer = BankAccountTransactionSerializer(bankTransaction_instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({"message": "Success"}, status=status.HTTP_200_OK)
+            return Response({"message": "Success"}, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, *args, **kwargs):
         ids = request.data.get('ids')
@@ -82,9 +90,14 @@ class BankAccountViewSet(
         serializer = BankAccountSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({
-            'message': "Success"
-        }, status=status.HTTP_201_CREATED)
+            return Response({
+                'message': "Success"
+            }, status=status.HTTP_201_CREATED)
+        else:
+            print(serializer.errors)
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
@@ -92,32 +105,36 @@ class BankAccountViewSet(
     def list(self, request, *args, **kwargs):
         if request.query_params.get("id"):
             id = int(request.query_params.get("id"))
-            bankTransactionInstance = BankAccount.objects.get(id=id)
-            serializer = BankAccountSerializer(bankTransactionInstance)
+            bankAccountInstance = BankAccount.objects.get(id=id)
+            serializer = BankAccountSerializer(bankAccountInstance)
             return Response({
                 'instance': serializer.data
             }, status=status.HTTP_200_OK)
         else:
-            bankTransaction = BankAccount.objects.filter()
-            totalBankAccount = bankTransaction.count()
-            serializer = BankAccountSerializer(bankTransaction, many=True)
+            bankAccount = BankAccount.objects.filter()
+            totalBankAccount = bankAccount.count()
+            serializer = BankAccountSerializer(bankAccount, many=True)
             return Response({
-                'bankTransaction': serializer.data,
+                'bankAccount': serializer.data,
                 "totalBankAccount": totalBankAccount
             }, status=status.HTTP_200_OK)
     
     def put(self, request, *args, **kwargs):
         id = int(request.query_params.get('id'))
-        bankTransaction_instance = BankAccount.objects.get(id=id)
-        serializer = BankAccountSerializer(bankTransaction_instance, data=request.data)
+        bankAccount_instance = BankAccount.objects.get(id=id)
+        serializer = BankAccountSerializer(bankAccount_instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({"message": "Success"}, status=status.HTTP_200_OK)
+            return Response({"message": "Success"}, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, *args, **kwargs):
         ids = request.data.get('ids')
-        bankTransaction = BankAccount.objects.filter(id__in=ids)
-        bankTransaction.delete()
+        bankAccount = BankAccount.objects.filter(id__in=ids)
+        bankAccount.delete()
         return Response({
             'message': "Success"
         }, status=status.HTTP_200_OK)

@@ -54,7 +54,7 @@ export const incomeList = async (data) => {
   }
 };
 
-export const getIncomeInstanceDetail = async ({id}) => {
+export const getIncomeInstanceDetail = async ({ id }) => {
   try {
     // const token = get_jwt_token();
     // loginRedirect(token);
@@ -64,7 +64,7 @@ export const getIncomeInstanceDetail = async ({id}) => {
         // Authorization: `Bearer ${token}`,
       },
     };
-    console.log(id);
+
     let url = `/income/income/?id=${id}`;
     const response = await axios.get(url, config);
     return { data: response.data, error: null };
@@ -82,7 +82,7 @@ export const deleteIncome = async (data) => {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`,
       },
-      data : data,
+      data: data,
     };
     console.log("data", data);
     const url = `/income/income/`;

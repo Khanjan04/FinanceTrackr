@@ -1,0 +1,52 @@
+#nav-dropdown-systemuser::after {
+    display: none !important;
+}
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    margin: 0 10px;
+}
+
+.form-em-style-normal {
+    font-style: normal !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+.heading_datable{
+    top: 0px;
+    position: sticky !important;
+    z-index: 100;
+}
+
+#systemUserEdit_password_input > .form_input_field:focus + .show-password-block{
+    border-color:#EDECEC !important;
+    background-color: #fff !important;
+    outline:0 !important;
+    box-shadow: none !important;
+}
+#systemUserEdit_password_input > .form_input_field:valid + .show-password-block{
+border-color: #ced4da !important;
+background-image: none !important;
+box-shadow: none !important;
+}
+
+#systemUserEdit_password_input .form_input_field{
+border-top-right-radius: 0 !important;
+border-bottom-right-radius: 0 !important;
+}
+#systemUserEdit_password_input .show-password-block{
+border-top-left-radius: 0 !important;
+border-bottom-left-radius: 1 !important;
+border-top-right-radius: 4px !important;
+border-bottom-right-radius: 4px !important;
+}
+.form-control:invalid > #systemUserEdit_password_input > .form_input_field{
+border-color: #dc3545 !important;
+}
+.form-control:invalid > #systemUserEdit_password_input > .form_input_field:invalid + .show-password-block{
+border-color: #dc3545 !important;
+}

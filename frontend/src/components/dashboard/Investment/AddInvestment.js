@@ -11,11 +11,11 @@ import { showError, showSuccess } from "../../../utils/showMessage";
 import { fadedelayTime } from "../../../utils/transitionEffectParams";
 import CrossButton from "../../common/ButtonSpinner/CrossButton";
 import GeneralButton from "../../common/SaveButton/GeneralButton";
-import { addExpense } from "../../../api/expense";
+import { addInvestment } from "../../../api/investment";
 
-const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseList }) => {
+const AddInvestmentInstance = ({ setOpenAddInvestment, setInvestmentInstance, getInvestmentList }) => {
   const [date, setDate] = useState("");
-  const [type, setType] = useState("home");
+  const [type, setType] = useState("stock");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [validated, setValidated] = useState(false);
@@ -35,13 +35,11 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       setDate(date);
   }, []);
   
-  const expense_types = [
-    { value: "home", label: "Home" },
-    { value: "miscellaneous", label: "Miscellaneous" },
-    { value: "travelling", label: "Travelling" },
-    { value: "med_learning", label: "Medical/Learning" },
-    { value: "shop_party", label: "Shopping/Party" },
-    { value: "special", label: "Special" },
+  const investment_types = [
+    { value: "stock", label: "Stock" },
+    { value: "mf", label: "Mutual Fund" },
+    { value: "nps", label: "NPS" },
+    { value: "fd", label: "FD" },
   ];
 
   const selectStyles = {
@@ -68,7 +66,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
     }),
   };
 
-  const addExpenseFormHandler = async (event) => {
+  const addInvestmentFormHandler = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
@@ -80,7 +78,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       finalDate = new Date(date);
       setDate(finalDate);
 
-      const { data, error } = await addExpense({
+      const { data, error } = await addInvestment({
         ...(date !== "" && { date: Date.parse(finalDate) / 1000 }),
         ...(type !== "" && { type: type }),
         ...(amount !== "" && { amount: amount }),
@@ -89,14 +87,14 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       if (data !== null) {
         showSuccess(data);
         setLoading(false);
-        setOpenAddExpense((o) => !o);
-        setExpenseInstance(new Object());
+        setOpenAddInvestment((o) => !o);
+        setInvestmentInstance(new Object());
       }
       if (error !== null) {
         showError(error);
         setLoading(false);
       }
-      getExpenseList();
+      getInvestmentList();
     }
   };
 
@@ -105,15 +103,15 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       <div>
         <Container fluid className="main_content_container mx-auto">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h3 className="main_content_heading">Add Expense</h3>
+            <h3 className="main_content_heading">Add Investment</h3>
             <CrossButton
-              onClick={() => setOpenAddExpense((o) => !o)}
+              onClick={() => setOpenAddInvestment((o) => !o)}
             ></CrossButton>
           </div>
           <Form
             noValidate
             validated={validated}
-            onSubmit={addExpenseFormHandler}
+            onSubmit={addInvestmentFormHandler}
             className="add_asset_form"
           >
             <Stack gap={1}>
@@ -154,10 +152,10 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
                 </Form.Label>
                 <Col md={9}>
                   <Select
-                    defaultValue={expense_types[0]}
+                    defaultValue={investment_types[0]}
                     name="asset_type"
                     required={true}
-                    options={expense_types}
+                    options={investment_types}
                     onChange={(selectedOption) => setType(selectedOption.value)}
                     styles={selectStyles}
                   />
@@ -210,7 +208,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
               <Row className="pt-9 mb-1 justify-content-end">
                 <Col sm="auto">
                   <GeneralButton
-                    onClickEvent={() => setOpenAddExpense((o) => !o)}
+                    onClickEvent={() => setOpenAddInvestment((o) => !o)}
                     className="me-1"
                     value="Cancel"
                     color="#505050"
@@ -247,4 +245,4 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
   );
 };
 
-export default AddExpenseInstance;
+export default AddInvestmentInstance;

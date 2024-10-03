@@ -14,7 +14,11 @@ import {
   slideDirection,
 } from "../../../utils/transitionEffectParams";
 
-import { deleteExpense, getExpenseInstanceDetail, expenseList } from "../../../api/expense";
+import {
+  deleteExpense,
+  expenseList,
+  getExpenseInstanceDetail,
+} from "../../../api/expense";
 import CustomModal from "../../common/CustomModal/CustomModal";
 import CustomDelaySkeleton from "../../common/DelaySkeleton/CustomDelaySkeleton";
 import ListHeading from "../../common/RDTListHeading/ListHeading";
@@ -23,8 +27,8 @@ import GeneralButton from "../../common/SaveButton/GeneralButton";
 import ShowAlert from "../../common/ShowAlert/ShowAlert";
 import "../../common/css/RDT_common.scss";
 import AddExpenseInstance from "./AddExpense";
-import "./Expense.scss";
 import EditExpenseInstance from "./EditExpense";
+import "./Expense.scss";
 
 const ActionComponent = ({ setOpenAddExpense }) => {
   return (
@@ -100,6 +104,15 @@ const Expense = () => {
     getExpenseList();
   }, []);
 
+  const expense_types = {
+    home: "Home",
+    miscellaneous: "Miscellaneous",
+    travelling: "Travelling",
+    med_learning: "Medical/Learning",
+    shop_party: "Shopping/Party",
+    special: "Special",
+  };
+
   const handleRowSelected = useCallback((state) => {
     setSelectedRows(state.selectedRows);
   }, []);
@@ -140,7 +153,6 @@ const Expense = () => {
     setLoadingDelete(false);
   };
   const handleSystemUserEdit = async (id) => {
-    console.log(id);
     const { data, error } = await getExpenseInstanceDetail({
       id: id,
     });
@@ -183,7 +195,7 @@ const Expense = () => {
     },
     {
       name: "Type",
-      selector: (row) => row.type,
+      selector: (row) => expense_types[row.type],
       grow: 1,
       sortable: true,
     },

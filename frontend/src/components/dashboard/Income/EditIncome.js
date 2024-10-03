@@ -19,8 +19,16 @@ const EditIncomeInstance = ({
   setIncomeInstance,
   incomeInstance,
 }) => {
+  const income_types = [
+    { value: "miniorange", label: "miniOrange" },
+    { value: "freelance", label: "Freelance" },
+    { value: "dad", label: "Dad" },
+    { value: "invts_sold", label: "Invts Sold" },
+    { value: "refund", label: "Refund" },
+  ];
+  
   const [date, setDate] = useState("");
-  const [type, setType] = useState(incomeInstance.type);
+  const [type, setType] = useState(income_types[incomeInstance.type]);
   const [amount, setAmount] = useState(incomeInstance.amount);
   const [description, setDescription] = useState(incomeInstance.description);
   const [validated, setValidated] = useState(false);
@@ -39,14 +47,6 @@ const EditIncomeInstance = ({
 
     setDate(date);
   }, []);
-
-  const income_types = [
-    { value: "miniorange", label: "miniOrange" },
-    { value: "freelance", label: "Freelance" },
-    { value: "dad", label: "Dad" },
-    { value: "invts_sold", label: "Invts Sold" },
-    { value: "refund", label: "Refund" },
-  ];
 
   const selectStyles = {
     control: (styles) => ({
@@ -161,7 +161,7 @@ const EditIncomeInstance = ({
                 </Form.Label>
                 <Col md={9}>
                   <Select
-                    defaultValue={income_types[0]}
+                    value={income_types[incomeInstance.type]}
                     name="asset_type"
                     required={true}
                     options={income_types}

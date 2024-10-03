@@ -14,7 +14,11 @@ import {
   slideDirection,
 } from "../../../utils/transitionEffectParams";
 
-import { deleteIncome, getIncomeInstanceDetail, incomeList } from "../../../api/income";
+import {
+  deleteIncome,
+  getIncomeInstanceDetail,
+  incomeList,
+} from "../../../api/income";
 import CustomModal from "../../common/CustomModal/CustomModal";
 import CustomDelaySkeleton from "../../common/DelaySkeleton/CustomDelaySkeleton";
 import ListHeading from "../../common/RDTListHeading/ListHeading";
@@ -23,8 +27,8 @@ import GeneralButton from "../../common/SaveButton/GeneralButton";
 import ShowAlert from "../../common/ShowAlert/ShowAlert";
 import "../../common/css/RDT_common.scss";
 import AddIncomeInstance from "./AddIncome";
-import "./Income.scss";
 import EditIncomeInstance from "./EditIncome";
+import "./Income.scss";
 
 const ActionComponent = ({ setOpenAddIncome }) => {
   return (
@@ -80,6 +84,14 @@ const Income = () => {
   useEffect(() => {
     setSlideChecked(true);
   }, []);
+
+  const income_types = {
+    miniorange: "miniOrange",
+    freelance: "Freelance",
+    dad: "Dad",
+    invts_sold: "Invts Sold",
+    refund: "Refund",
+  };
 
   const systemUserColumns = [
     { label: "System User Id", value: "id" },
@@ -140,7 +152,6 @@ const Income = () => {
     setLoadingDelete(false);
   };
   const handleSystemUserEdit = async (id) => {
-    console.log(id);
     const { data, error } = await getIncomeInstanceDetail({
       id: id,
     });
@@ -183,7 +194,7 @@ const Income = () => {
     },
     {
       name: "Type",
-      selector: (row) => row.type,
+      selector: (row) => income_types[row.type],
       grow: 1,
       sortable: true,
     },

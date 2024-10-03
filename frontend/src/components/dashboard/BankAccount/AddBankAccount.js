@@ -11,37 +11,25 @@ import { showError, showSuccess } from "../../../utils/showMessage";
 import { fadedelayTime } from "../../../utils/transitionEffectParams";
 import CrossButton from "../../common/ButtonSpinner/CrossButton";
 import GeneralButton from "../../common/SaveButton/GeneralButton";
-import { addExpense } from "../../../api/expense";
+import { addBankAccount } from "../../../api/bankAccount";
 
-const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseList }) => {
-  const [date, setDate] = useState("");
-  const [type, setType] = useState("home");
-  const [amount, setAmount] = useState("");
-  const [description, setDescription] = useState("");
+const AddBankAccountInstance = ({ setOpenAddBankAccount, setBankAccountInstance, getBankAccountList }) => {
+  const [bank, setBank] = useState("hdfc");
+  const [displayName, setDisplayName] = useState("");
+  const [ifsCode, setIFSCode] = useState("");
+  const [accountNo, setAccountNo] = useState("");
   const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [slideChecked, setSlideChecked] = useState(false);
 
   useEffect(() => {
     setSlideChecked(true);
-    const now = new Date();
-    let date =
-      now.getFullYear() +
-      "-" +
-      (now.getMonth() < 9 ? "0" + (now.getMonth() + 1) : now.getMonth() + 1) +
-      "-" +
-      (now.getDate() < 9 ? "0" + now.getDate() : now.getDate());
-    
-      setDate(date);
   }, []);
   
-  const expense_types = [
-    { value: "home", label: "Home" },
-    { value: "miscellaneous", label: "Miscellaneous" },
-    { value: "travelling", label: "Travelling" },
-    { value: "med_learning", label: "Medical/Learning" },
-    { value: "shop_party", label: "Shopping/Party" },
-    { value: "special", label: "Special" },
+  const bankAccount_types = [
+    { value: "hdfc", label: "HDFC" },
+    { value: "icici", label: "ICICI" },
+    { value: "sbi", label: "SBI" },
   ];
 
   const selectStyles = {
@@ -68,7 +56,7 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
     }),
   };
 
-  const addExpenseFormHandler = async (event) => {
+  const addBankAccountFormHandler = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
@@ -76,27 +64,24 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       setValidated(true);
     } else {
       setLoading(true);
-      let finalDate;
-      finalDate = new Date(date);
-      setDate(finalDate);
 
-      const { data, error } = await addExpense({
-        ...(date !== "" && { date: Date.parse(finalDate) / 1000 }),
-        ...(type !== "" && { type: type }),
-        ...(amount !== "" && { amount: amount }),
-        ...(description !== "" && { description: description }),
+      const { data, error } = await addBankAccount({
+        ...(bank !== "" && { bank: bank }),
+        ...(accountNo !== "" && { accountNo: accountNo }),
+        ...(displayName !== "" && { displayName: displayName }),
+        ...(ifsCode !== "" && { ifscode: ifsCode }),
       });
       if (data !== null) {
         showSuccess(data);
         setLoading(false);
-        setOpenAddExpense((o) => !o);
-        setExpenseInstance(new Object());
+        setOpenAddBankAccount((o) => !o);
+        setBankAccountInstance(new Object());
       }
       if (error !== null) {
         showError(error);
         setLoading(false);
       }
-      getExpenseList();
+      getBankAccountList();
     }
   };
 
@@ -105,60 +90,33 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
       <div>
         <Container fluid className="main_content_container mx-auto">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h3 className="main_content_heading">Add Expense</h3>
+            <h3 className="main_content_heading">Add Bank Account</h3>
             <CrossButton
-              onClick={() => setOpenAddExpense((o) => !o)}
+              onClick={() => setOpenAddBankAccount((o) => !o)}
             ></CrossButton>
           </div>
           <Form
             noValidate
             validated={validated}
-            onSubmit={addExpenseFormHandler}
+            onSubmit={addBankAccountFormHandler}
             className="add_asset_form"
           >
             <Stack gap={1}>
               <Form.Group
                 as={Row}
                 className="mb-3 justify-content-between"
-                controlId="formPlaintextName"
-              >
-                <Form.Label column md={3} className="input_label">
-                  Date <span className="text-danger">*</span>
-                </Form.Label>
-                <Col md={9}>
-                  <div className="col-md-12 col-lg-10 col-sm-6 row">
-                    <Form.Group className="col-md-6 col-sm-12">
-                      <Form.Control
-                        required
-                        type="date"
-                        value={date}
-                        min={date}
-                        onChange={(e) => {
-                          setDate(e.target.value);
-                        }}
-                      />
-                    </Form.Group>
-                  </div>
-                  <Form.Control.Feedback type="invalid">
-                    Please enter a start from time.
-                  </Form.Control.Feedback>
-                </Col>
-              </Form.Group>
-              <Form.Group
-                as={Row}
-                className="mb-3 justify-content-between"
                 controlId="formPlaintextAssetType"
               >
                 <Form.Label column md={3} className="input_label">
-                  Type <span className="text-danger">*</span>
+                  Bank <span className="text-danger">*</span>
                 </Form.Label>
                 <Col md={9}>
                   <Select
-                    defaultValue={expense_types[0]}
+                    defaultValue={bankAccount_types[0]}
                     name="asset_type"
                     required={true}
-                    options={expense_types}
-                    onChange={(selectedOption) => setType(selectedOption.value)}
+                    options={bankAccount_types}
+                    onChange={(selectedOption) => setBank(selectedOption.value)}
                     styles={selectStyles}
                   />
                 </Col>
@@ -169,19 +127,19 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
                 controlId="formPlaintextAssetType"
               >
                 <Form.Label column md={3} className="input_label">
-                  Amount <span className="text-danger">*</span>
+                  Account No. <span className="text-danger">*</span>
                 </Form.Label>
                 <Col md={9}>
                   <Form.Control
                     required
                     className="form_input_field"
                     type="number"
-                    value={amount}
-                    onChange={(event) => setAmount(event.target.value)}
-                    placeholder="Amount"
+                    value={accountNo}
+                    onChange={(event) => setAccountNo(event.target.value)}
+                    placeholder="Account No."
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please enter an amount.
+                    Please enter account number.
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
@@ -191,26 +149,48 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
                 controlId="formPlaintextAssetType"
               >
                 <Form.Label column md={3} className="input_label">
-                  Description <span className="text-danger">*</span>
+                  Display Name <span className="text-danger">*</span>
                 </Form.Label>
                 <Col md={9}>
                   <Form.Control
                     required
                     className="form_input_field"
                     type="text"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                    placeholder="Description"
+                    value={displayName}
+                    onChange={(event) => setDisplayName(event.target.value)}
+                    placeholder="Display Name"
                   />
                   <Form.Control.Feedback type="invalid">
-                    Please enter a description.
+                    Please enter an display name.
+                  </Form.Control.Feedback>
+                </Col>
+              </Form.Group>
+              <Form.Group
+                as={Row}
+                className="mb-3 justify-content-between"
+                controlId="formPlaintextAssetType"
+              >
+                <Form.Label column md={3} className="input_label">
+                  IFS Code <span className="text-danger">*</span>
+                </Form.Label>
+                <Col md={9}>
+                  <Form.Control
+                    required
+                    className="form_input_field"
+                    type="text"
+                    value={ifsCode}
+                    onChange={(event) => setIFSCode(event.target.value)}
+                    placeholder="IFS Code"
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter a IFS Code.
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
               <Row className="pt-9 mb-1 justify-content-end">
                 <Col sm="auto">
                   <GeneralButton
-                    onClickEvent={() => setOpenAddExpense((o) => !o)}
+                    onClickEvent={() => setOpenAddBankAccount((o) => !o)}
                     className="me-1"
                     value="Cancel"
                     color="#505050"
@@ -247,4 +227,4 @@ const AddExpenseInstance = ({ setOpenAddExpense, setExpenseInstance, getExpenseL
   );
 };
 
-export default AddExpenseInstance;
+export default AddBankAccountInstance;

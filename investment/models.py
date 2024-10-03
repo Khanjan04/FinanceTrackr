@@ -13,5 +13,5 @@ class Investment(models.Model):
     date = models.BigIntegerField(null=False, blank=False)
     type = models.CharField(max_length=128, choices=INVESTMENT_TYPE, null=False, blank=False)
     amount = models.BigIntegerField(null=False, blank=False)
-    decription = models.TextField(null=False, blank=False)
+    description = models.TextField(null=False, blank=False)
 

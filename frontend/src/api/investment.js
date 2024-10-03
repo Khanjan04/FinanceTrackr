@@ -1,8 +1,7 @@
 import axios from "./axios_interceptor";
 
-export const addExpense = async (data) => {
+export const addInvestment = async (data) => {
   try {
-    console.log("qwerty");
     // const token = get_jwt_token();
     // loginRedirect(token);
     const config = {
@@ -11,16 +10,15 @@ export const addExpense = async (data) => {
         // Authorization: `Bearer ${token}`,
       },
     };
-    const url = `/expense/expense/`;
+    const url = `/investment/investment/`;
     const response = await axios.post(url, data, config);
-    console.log(response);
     return { data: response.data, error: null };
   } catch (e) {
     return { data: null, error: e.response.data.errors };
   }
 };
 
-export const editExpense = async ({ id, updatedInstance }) => {
+export const editInvestment = async ({ id, updatedInstance }) => {
   try {
     // const token = get_jwt_token();
     // loginRedirect(token);
@@ -30,7 +28,7 @@ export const editExpense = async ({ id, updatedInstance }) => {
         // Authorization: `Bearer ${token}`,
       },
     };
-    const url = `/expense/expense/?id=${id}`;
+    const url = `/investment/investment/?id=${id}`;
     const response = await axios.put(url, updatedInstance, config);
     return { data: response.data, error: null };
   } catch (e) {
@@ -38,7 +36,7 @@ export const editExpense = async ({ id, updatedInstance }) => {
   }
 };
 
-export const expenseList = async (data) => {
+export const investmentList = async (data) => {
   try {
     // const token = get_jwt_token();
     // loginRedirect(token);
@@ -48,7 +46,7 @@ export const expenseList = async (data) => {
         // Authorization: `Bearer ${token}`,
       },
     };
-    let url = `/expense/expense/`;
+    let url = `/investment/investment/`;
     const response = await axios.get(url, config);
     return { data: response.data, error: null };
   } catch (e) {
@@ -56,7 +54,7 @@ export const expenseList = async (data) => {
   }
 };
 
-export const getExpenseInstanceDetail = async ({ id }) => {
+export const getInvestmentInstanceDetail = async ({ id }) => {
   try {
     // const token = get_jwt_token();
     // loginRedirect(token);
@@ -67,7 +65,7 @@ export const getExpenseInstanceDetail = async ({ id }) => {
       },
     };
 
-    let url = `/expense/expense/?id=${id}`;
+    let url = `/investment/investment/?id=${id}`;
     const response = await axios.get(url, config);
     return { data: response.data, error: null };
   } catch (e) {
@@ -75,7 +73,7 @@ export const getExpenseInstanceDetail = async ({ id }) => {
   }
 };
 
-export const deleteExpense = async (data) => {
+export const deleteInvestment = async (data) => {
   try {
     // const token = get_jwt_token();
     // loginRedirect(token);
@@ -87,7 +85,7 @@ export const deleteExpense = async (data) => {
       data: data,
     };
     console.log("data", data);
-    const url = `/expense/expense/`;
+    const url = `/investment/investment/`;
     const response = await axios.delete(url, config);
     console.log("response", response);
     return { data: response.data, error: null };

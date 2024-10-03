@@ -24,9 +24,13 @@ class ExpenseViewSet(
         serializer = ExpenseSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({
-            'message': "Success"
-        }, status=status.HTTP_201_CREATED)
+            return Response({
+                'message': "Success"
+            }, status=status.HTTP_201_CREATED)
+        else:
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
@@ -54,7 +58,11 @@ class ExpenseViewSet(
         serializer = ExpenseSerializer(expense_instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
-        return Response({"message": "Success"}, status=status.HTTP_200_OK)
+            return Response({"message": "Success"}, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                    'message': "Failure"
+                }, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, *args, **kwargs):
         ids = request.data.get('ids')

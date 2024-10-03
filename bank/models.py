@@ -24,5 +24,6 @@ class BankAccountTransaction(models.Model):
     date = models.BigIntegerField(null=False)
     tranType = models.CharField(max_length=128, choices=TRANSACTION_TYPE, blank=False, null=False)
     bankAccount = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
+    amount = models.BigIntegerField(null=False, blank=False, default=0)
     decription = models.TextField(blank=False, null=False)
 
