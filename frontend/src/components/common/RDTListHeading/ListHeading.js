@@ -12,7 +12,7 @@ const ListHeading = ({dataTableHeadingText,dataTableHeadingIcon, dataTablePageLi
     dataTablePageLink instanceof Array ? links=[...links, ...dataTablePageLink]: links.push(dataTablePageLink)
 
     return (
-        <div className="d-flex flex-row justify-content-start align-items-center py-3 rdt_heading_container">
+        <div className="d-flex flex-row justify-content-start align-items-center py-3">
 
             {title.map((titles, index) => (<NavLink
               to={links[index] && links[index]}

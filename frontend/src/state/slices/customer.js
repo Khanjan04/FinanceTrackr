@@ -94,30 +94,30 @@ const customerSlice = createSlice({
       state.liveStream = action.payload.live_stream;
     },
   },
-  extraReducers: {
-    [getSessionInfo.pending]: (state) => {
-      state.status = LOADING;
-    },
-    [getSessionInfo.fulfilled]: (state, action) => {
-      state.status = SUCCESS;
-      state.recordSession = action.payload.value;
-    },
-    [getSessionInfo.rejected]: (state, action) => {
-      state.error = action.payload.errors;
-      state.status = ERROR;
-    },
-    [getLiveStreamInfo.pending]: (state) => {
-      state.status = LOADING;
-    },
-    [getLiveStreamInfo.fulfilled]: (state, action) => {
-      state.status = SUCCESS;
-      state.liveStream = action.payload.value;
-    },
-    [getLiveStreamInfo.rejected]: (state, action) => {
-      state.error = action.payload.errors;
-      state.status = ERROR;
-    },
-  },
+  // extraReducers: {
+  //   [getSessionInfo.pending]: (state) => {
+  //     state.status = LOADING;
+  //   },
+  //   [getSessionInfo.fulfilled]: (state, action) => {
+  //     state.status = SUCCESS;
+  //     state.recordSession = action.payload.value;
+  //   },
+  //   [getSessionInfo.rejected]: (state, action) => {
+  //     state.error = action.payload.errors;
+  //     state.status = ERROR;
+  //   },
+  //   [getLiveStreamInfo.pending]: (state) => {
+  //     state.status = LOADING;
+  //   },
+  //   [getLiveStreamInfo.fulfilled]: (state, action) => {
+  //     state.status = SUCCESS;
+  //     state.liveStream = action.payload.value;
+  //   },
+  //   [getLiveStreamInfo.rejected]: (state, action) => {
+  //     state.error = action.payload.errors;
+  //     state.status = ERROR;
+  //   },
+  // },
 });
 
 export const { clearErrors, resetSuccess, setRecordSession, setLiveStream } =

@@ -40,7 +40,7 @@ export const logoutUser = createAsyncThunk(
   }
 )
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     status: IDLE,
   },
@@ -59,40 +59,40 @@ const userSlice = createSlice({
       state.successMessage = null;
     },
   },
-  extraReducers: {
-    [loadUser.pending]: (state, action) => {
-      state.status = LOADING;
-    },
-    [loadUser.fulfilled]: (state, action) => {
-      state.status = SUCCESS;
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-      state.session_key = action.payload.session_key;
-    },
-    [loadUser.rejected]: (state, action) => {
-      state.isAuthenticated = false;
-      state.user = null;
-      state.session_key = null;
-      state.token = null;
-    },
-    [logoutUser.pending]: (state, action) => {
-      state.status = LOADING;
-    },
-    [logoutUser.fulfilled]: (state, action) => {
-      state.status = SUCCESS;
-      state.isAuthenticated = false;
-      state.user = null;
-      state.session_key = null;
-      state.token = null;
-      localStorage.removeItem("jwt");
-    },
-    [logoutUser.rejected]: (state, action) => {
-      state.status = ERROR;
-      state.error = action.payload.errors;
-    }
-  }
-}
-);
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadUser.pending, (state, action) => {
+        state.status = LOADING;
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.status = SUCCESS;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
+        state.session_key = action.payload.session_key;
+      })
+      .addCase(loadUser.rejected, (state, action) => {
+        state.isAuthenticated = false;
+        state.user = null;
+        state.session_key = null;
+        state.token = null;
+      })
+      .addCase(logoutUser.pending, (state, action) => {
+        state.status = LOADING;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.status = SUCCESS;
+        state.isAuthenticated = false;
+        state.user = null;
+        state.session_key = null;
+        state.token = null;
+        localStorage.removeItem("jwt");
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.status = ERROR;
+        state.error = action.payload.errors;
+      });
+  },
+});
 
 
 export const { clearErrors, resetSuccess, authenticateUser } = userSlice.actions;
