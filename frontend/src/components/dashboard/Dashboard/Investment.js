@@ -34,8 +34,8 @@ const InvestmentDashboard = ({ data }) => {
 
   return (
     <div className="investment-section">
-      <h2>Investments</h2>
-      <p>Total Investments: ${totalInvestment}</p>
+      <h2 className="investment-heading">Investments</h2>
+      <p>Total Investments: Rs {totalInvestment}</p>
       <Bar data={chartData} />
     </div>
   );

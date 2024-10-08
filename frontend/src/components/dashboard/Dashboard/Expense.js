@@ -17,17 +17,24 @@ const ExpenseDashboard = ({ data }) => {
       {
         label: "Expense Amount",
         data: data.map((item) => item.amount),
-        backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
+        backgroundColor: [
+          "rgba(55, 99, 132, 150.6)",
+          "rgba(14, 142, 235, 90.6)",
+          "rgba(194, 162, 235, 70.6)",
+          "rgba(04, 62, 235, 50.6)",
+          "rgba(54, 202, 235, 30.6)",
+          "rgba(54, 142, 235, 10.6)",
+        ],
       },
     ],
   };
 
   return (
     <div className="expense-section">
-      <h2>Expenses</h2>
-      <p>Total Expenses: ${totalExpense}</p>
+      <h2 className="expense-heading">Expenses</h2>
+      <p>Total Expenses: Rs {totalExpense}</p>
       <p>
-        Largest Expense: {largestExpense.type} - ${largestExpense.amount}
+        Largest Expense: {largestExpense.type} - Rs {largestExpense.amount}
       </p>
       <Pie data={chartData} />
     </div>

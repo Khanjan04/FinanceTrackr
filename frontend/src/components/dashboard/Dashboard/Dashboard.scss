@@ -118,13 +118,14 @@ $info-text-color: #505050;
   flex-wrap: wrap;
   color: rgba(0, 0, 0, 0.87);
   background-color: #ffffff;
-  min-height: 60px;
-  // padding-right: 25px !important;
+  min-height: 50px;
+  padding-right: 25px !important;
   padding-left: 40px !important;
   margin-top: -10px !important;
-  margin-left: -22px !important;
+  margin-left: -20px !important;
   margin-right: -12px !important;
   background-color: #f9f9f9;
+  border-bottom: 10px solid #f0f0f0;
 }
 
 .dashboard_subheader {
@@ -141,6 +142,8 @@ $info-text-color: #505050;
 .dashboard {
   padding: 20px;
   text-align: center;
+  background-color: #f9f9f9;
+  margin-top: 10px !important;
 }
 
 .components-container {
@@ -155,7 +158,16 @@ $info-text-color: #505050;
   border: 1px solid #ddd;
   padding: 20px;
   width: 30%;
-  background-color: #f9f9f9;
+  background-color: rgba(4, 61, 251, 0.1);
+  border-radius: 50px;
+}
+
+
+.expense-heading,
+.investment-heading {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 550;
+  padding-bottom: 5px !important;
 }
 
 h2 {
